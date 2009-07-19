@@ -114,7 +114,7 @@ section at the end of this file).
 /* Define this to 1 if the device has its own power supply. Set it to 0 if the
  * device is powered from the USB bus.
  */
-#define USB_CFG_MAX_BUS_POWER           20
+#define USB_CFG_MAX_BUS_POWER           100
 /* Set this variable to the maximum USB bus power consumption of your device.
  * The value is in milliamperes. [It will be divided by two since USB
  * communicates power requirements in units of 2 mA.]
@@ -254,7 +254,7 @@ section at the end of this file).
  * HID class is 3, no subclass and protocol required (but may be useful!)
  * CDC class is 2, use subclass 2 and protocol 1 for ACM
  */
-#define USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH    52
+#define USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH    50
 /* Define this to the length of the HID report descriptor, if you implement
  * an HID device. Otherwise don't define it or define it to 0.
  * If you use this define, you must add a PROGMEM character array named
