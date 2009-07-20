@@ -152,7 +152,18 @@ void inDecoderPoll(void)
         channelData[i] = data;          // save to data buffer
     }
 
-	channelData[7] = 0;
+	if(PINB & _BV(PB2))
+	{
+		channelData[7] = 238;
+	}
+	else if (PINB & _BV(PB3))
+	{
+		channelData[7] = 1261;
+	}
+	else
+	{
+		channelData[7] = 749;
+	}
 
 	// set new data flag
     newDataFound = MAX_CHANNELS;
@@ -163,6 +174,10 @@ void inDecoderInit()
 	// configure ADC
     ADMUX  = (0<<REFS1)|(1<<REFS0);                         // AREF=AVCC
     ADCSR  = (1<<ADEN)|(1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0);    // lowest frequency
+
+	// configure PB2 and PNB3 as inputs and enable pullups
+	DDRB &= ~((1<<_BV(PB2))|(1<<_BV(PB3)));
+	PORTB |= ((1<<_BV(PB2))|(1<<_BV(PB3)));
 }
 
 void wdInit(void)
